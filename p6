@@ -145,3 +145,14 @@ app.listen(8000,()=>{
     console.log('express is working at http://localhost:8000');
 })
 
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Display_Inventory, AddInventory } from './to_inventory';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Display_Inventory />
+    <AddInventory />
+  </React.StrictMode>
+);
