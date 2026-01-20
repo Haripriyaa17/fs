@@ -114,3 +114,90 @@ class StudentListTable extends React.Component{
 }
 
 export default StudentListTable;
+
+
+
+import React from "react";
+
+class StudentRow extends React.Component {
+  render() {
+    const s = this.props.student;
+    return (
+      <tr>
+        <td>{s.slno}</td>
+        <td>{s.name}</td>
+        <td>{s.usn}</td>
+        <td>{s.marks}</td>
+      </tr>
+    );
+  }
+}
+class StudentApp extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      students: [
+        { slno: 1, name: "Stud1", usn: "RVCE1", marks: 150 },
+        { slno: 2, name: "Stud2", usn: "RVCE2", marks: 145 }
+      ],
+      name: "",
+      usn: "",
+      marks: ""
+    };
+  }
+
+  addStudent = () => {
+    const newStudent = {
+      slno: this.state.students.length + 1,
+      name: this.state.name,
+      usn: this.state.usn,
+      marks: this.state.marks
+    };
+
+    this.setState({
+      students: [...this.state.students, newStudent],
+      name: "",
+      usn: "",
+      marks: ""
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <h2>Student Registration Portal</h2>
+\
+        <input placeholder="Name"
+          value={this.state.name}
+          onChange={(e) => this.setState({ name: e.target.value })} />
+
+        <input placeholder="USN"
+          value={this.state.usn}
+          onChange={(e) => this.setState({ usn: e.target.value })} />
+
+        <input placeholder="Marks"
+          value={this.state.marks}
+          onChange={(e) => this.setState({ marks: e.target.value })} />
+
+        <button onClick={this.addStudent}>Add</button>
+
+        <hr />
+
+        <table border="1">
+          <tr>
+            <th>Sl No</th>
+            <th>Name</th>
+            <th>USN</th>
+            <th>Marks</th>
+          </tr>
+
+          {this.state.students.map(s =>
+            <StudentRow key={s.slno} student={s} />
+          )}
+        </table>
+      </div>
+    );
+  }
+}
+
+export default StudentApp;
