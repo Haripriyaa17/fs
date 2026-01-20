@@ -1,0 +1,82 @@
+npx create-react-app program10
+npm install react-router-dom axios cors
+
+Example Program: src/pages/Home.js
+import React from 'react';
+
+function Home() {
+  return (
+    <div>
+      <h1>Home Page</h1>
+      <p>Welcome to the homepage of our application!</p>
+    </div>
+  );
+}
+
+export default Home;
+Example Program: src/pages/About.js
+import React from 'react';
+
+function About() {
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>This is the about page, where you can learn more about us.</p>
+    </div>
+  );
+}
+
+export default About;
+Example Program: src/pages/Contact.js
+import React from 'react';
+
+function Contact() {
+  return (
+    <div>
+      <h1>Contact Page</h1>
+      <p>Get in touch with us through this contact page.</p>
+    </div>
+  );
+}
+
+export default Contact;
+
+Example Program: src/App.js
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import './App.css';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
